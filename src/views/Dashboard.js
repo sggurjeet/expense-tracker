@@ -1,13 +1,15 @@
 import React from "react";
+import { Balance } from "../components/Balance";
 
 function Dashboard() {
   return (
-    <div>
-      <h1>Everything is dispalyed here</h1>
+    <div className="dashboard">
+      <h2>Everything is displayed here</h2>
+      <Balance />
       <br />
       <br />
       {/* Dropdown Menu */}
-      <div>
+      <div className="dashboard">
         <div className="dropdown">
           <button
             className="btn btn-secondary dropdown-toggle"
@@ -26,8 +28,9 @@ function Dashboard() {
       </div>
       <br />
       <br />
+
       {/* Input Field to be available when either expense or income is clicked from category */}
-      <div>
+      <div className="dashboard">
         <input type="text" placeholder="Enter Your Expense" />
         <br />
         <br />
