@@ -13,8 +13,8 @@ function DropDown(props) {
   return (
     <div className="container p-5">
       <label>Choose a category</label>
-      <select className="custom-select" onChange={handleChange}>
-        <option disabled value="-1" selected>
+      <select defaultValue={"DEFAULT"} onChange={handleChange}>
+        <option value="DEFAULT" disabled>
           Select an expense category
         </option>
         <option value="Shopping">Shopping</option>

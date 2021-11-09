@@ -27,10 +27,10 @@ export default function AddTransactions({ id, addTransaction }) {
     console.log(changedvalue);
   };
   return (
-    <div>
+    <div className="add_transaction">
       <h3>Add Transaction</h3>
       <form onSubmit={onSubmit}>
-        <div>
+        <div className="transaction_dropdown">
           {/* <label>Entry</label>
           <input
             value={entry}
@@ -40,7 +40,7 @@ export default function AddTransactions({ id, addTransaction }) {
           /> */}
           <DropDown onSelectedChange={handleSelect} />
         </div>
-        <div>
+        <div className="transaction_amount">
           <label>Amount</label>
           <input
             value={amount}
@@ -49,10 +49,12 @@ export default function AddTransactions({ id, addTransaction }) {
             type="number"
           />
         </div>
-        <div>
+        <div className="transaction_date">
           <label>Date</label>
           <input
             value={date}
+            min="2000-01-01"
+            max="2030-01-01"
             onChange={(e) => setDate(e.target.value)}
             type="date"
           />

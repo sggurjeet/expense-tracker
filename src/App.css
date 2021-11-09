@@ -53,6 +53,7 @@ button{
   display: block;
   margin-right: auto;
   margin-left: auto;
+  /* color: bisque; */
 }
 
 label{
@@ -126,3 +127,36 @@ color:black
   color: white;
   text-align: center;
 }
+
+.add_transaction,.new_transaction{
+  width: 300px;
+  /* border:inset; */
+  border-radius: 8px;
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.list_transaction{
+  padding: 16px 16px 16px 60px;
+	border:none;
+	background: rgba(0, 0, 0, 0.003);
+	box-shadow: inset 0 -2px 1px rgb(0 0 0 / 3%);
+}
+/* .new_transaction{
+  position: relative;
+	margin: 0;
+	width: 80%;
+	font-size: 24px;
+	font-family: inherit;
+	font-weight: inherit;
+	line-height: 1.4em;
+	border: 0;
+	color: inherit;
+	padding: 2px;
+	border: none;
+  box-sizing: border-box;
+} */

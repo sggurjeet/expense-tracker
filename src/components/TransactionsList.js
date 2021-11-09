@@ -6,7 +6,7 @@ export default function TransactionsList({ transactions, delTransaction }) {
     return new Date(b.date) - new Date(a.date);
   });
   return (
-    <div>
+    <div className="new_transaction">
       <h3>Transactions</h3>
       <ul className="list">
         {transactions.map((transaction) => {

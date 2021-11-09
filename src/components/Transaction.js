@@ -1,21 +1,17 @@
 import React from "react";
+import "../App.css";
 
 export default function Transaction({ transaction, delTransaction }) {
   let sign = transaction.amount >= 0 ? "+" : "-";
   return (
-    <div>
+    <div className="list_transaction">
       <li className={transaction.amount >= 0 ? "plus" : "minus"}>
-        {transaction.text}
+        <div>{transaction.text}</div>
+        <div>{transaction.date}</div>
         <div>
-          <p style={{ marginRight: 8 }}>{transaction.date}</p>
           {sign}${Math.abs(transaction.amount)}
         </div>
-        <button
-          className="delete-btn"
-          onClick={() => delTransaction(transaction.id)}
-        >
-          X
-        </button>
+        <button onClick={() => delTransaction(transaction.id)}>Delete</button>
       </li>
     </div>
   );
