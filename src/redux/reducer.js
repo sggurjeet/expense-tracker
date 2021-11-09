@@ -1,13 +1,20 @@
-import { ADD_TRANSACTION } from "./type";
-import { combineReducers } from "redux";
+import { ADD_TRANSACTION, DEL_TRANSACTION } from "./type";
+
 const initialState = { transactions: [] };
 
-export const reducer = (state = initialState, action) => {
+const Reducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_TRANSACTION:
       return {
         ...state,
-        transactions: action.payload,
+        transactions: [action.payload, ...state.transactions],
+      };
+    case DEL_TRANSACTION:
+      return {
+        ...state,
+        transactions: state.transactions.filter(
+          (transaction) => transaction.id !== action.payload
+        ),
       };
 
     default:
@@ -15,8 +22,4 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-const rootReducer = combineReducers({
-  reducer: reducer,
-});
-
-export default rootReducer;
+export default Reducer;

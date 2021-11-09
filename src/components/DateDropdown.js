@@ -1,33 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 
-function DateDropdown() {
+function DateDropdown(props) {
+  const [selectedYear, setSelectedYear] = useState("");
+
+  const handleChange = (e) => {
+    const selected = e.target.value;
+    setSelectedYear(selected);
+
+    console.log(selected);
+  };
   return (
-    <div>
-      <div className="dropdown">
-        <button
-          className="btn btn-secondary dropdown-toggle"
-          type="button"
-          id="dropdownMenuButton1"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Month
-        </button>
-        <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li>January</li>
-          <li>February</li>
-          <li>March</li>
-          <li>April</li>
-          <li>May</li>
-          <li>June</li>
-          <li>July</li>
-          <li>August</li>
-          <li>September</li>
-          <li>October</li>
-          <li>November</li>
-          <li>December</li>
-        </ul>
-      </div>
+    <div className="container p-5">
+      {/* <label>Choose an Year</label> */}
+      <select className="custom-select" onChange={handleChange}>
+        <option defaultValue>Select a year</option>
+        <option value="2021">2021</option>
+        <option value="2020">2020</option>
+        <option value="2019">2019</option>
+        <option value="2018">2018</option>
+        <option value="2017">2017</option>
+      </select>
+      <div className="output">{selectedYear}</div>
     </div>
   );
 }

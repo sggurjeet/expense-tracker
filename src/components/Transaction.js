@@ -1,48 +1,22 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Transaction() {
-  const [entry, setEntry] = useState("");
-  const [amount, setAmount] = useState(0);
-  const [transaction, setTransaction] = useState({});
-  const newTransaction = {
-    id: Math.floor(Math.random() * 100000000),
-    entry,
-    localAmount: +amount,
-  };
-  //time stamp use instead of id
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setTransaction(newTransaction);
-    console.log(transaction);
-  };
+export default function Transaction({ transaction, delTransaction }) {
+  let sign = transaction.amount >= 0 ? "+" : "-";
   return (
-    <div className="center-block">
-      <h2>Add New Transaction</h2>
-      <div>
+    <div>
+      <li className={transaction.amount >= 0 ? "plus" : "minus"}>
+        {transaction.text}
         <div>
-          <input
-            type="text"
-            value={entry}
-            placeholder="Transaction Category"
-            onChange={(e) => {
-              setEntry(e.target.value);
-            }}
-          />
+          <p style={{ marginRight: 8 }}>{transaction.date}</p>
+          {sign}${Math.abs(transaction.amount)}
         </div>
-        <div>
-          <input
-            type="number"
-            value={amount}
-            placeholder="Enter the amount"
-            onChange={(e) => {
-              setAmount(e.target.value);
-            }}
-          />
-          <button onClick={handleSubmit}>Add Transaction</button>
-        </div>
-      </div>
+        <button
+          className="delete-btn"
+          onClick={() => delTransaction(transaction.id)}
+        >
+          X
+        </button>
+      </li>
     </div>
   );
 }
-
-export default Transaction;

@@ -1,0 +1,344 @@
+// import React, { useState } from "react";
+
+// function Transaction() {
+//   const [entry, setEntry] = useState("");
+//   const [amount, setAmount] = useState(0);
+//   const [transaction, setTransaction] = useState({});
+//   const newTransaction = {
+//     id: Math.floor(Math.random() * 100000000),
+//     entry,
+//     localAmount: +amount,
+//   };
+//   //time stamp use instead of id
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     setTransaction(newTransaction);
+//     console.log(transaction);
+//   };
+//   return (
+//     <div className="center-block">
+//       <h2>Add New Transaction</h2>
+//       <div>
+//         <div>
+//           <input
+//             type="text"
+//             value={entry}
+//             placeholder="Transaction Category"
+//             onChange={(e) => {
+//               setEntry(e.target.value);
+//             }}
+//           />
+//         </div>
+//         <div>
+//           <input
+//             type="number"
+//             value={amount}
+//             placeholder="Enter the amount"
+//             onChange={(e) => {
+//               setAmount(e.target.value);
+//             }}
+//           />
+//           <button onClick={handleSubmit}>Add Transaction</button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default Transaction;
+
+// import React from "react";
+// import Transaction from "./Transaction";
+
+// export const TransactionList = () => {
+//   return (
+//     <>
+//       <Transaction />
+//       <h1>Transactions History </h1>
+//       <ul className="list">
+//         {/* {transactions.map((transaction) => (
+//           <Transaction key={transaction.id} transaction={transaction} />
+//         ))} */}
+//         <li>transaction 1</li>
+//         <li>transaction 2</li>
+//       </ul>
+//     </>
+//   );
+// };
+
+
+// import { createStore } from "redux";
+// import { persistStore, persistReducer } from "redux-persist";
+// import storage from "redux-persist/lib/storage"; // defaults to localStorage for web
+
+// import Reducer from "./reducer";
+
+// const persistConfig = {
+//   key: "root",
+//   storage,
+// };
+
+// const persistedReducer = persistReducer(persistConfig, Reducer);
+// export let store = createStore(persistedReducer);
+// export let persistor = persistStore(store);
+
+
+// export const Balance = () => {
+//   // const { transactions } = useContext(GlobalContext);
+
+//   // const amounts = transactions.map((transaction) => transaction.amount);
+
+//   // const total = amounts.reduce((acc, item) => (acc += item), 0);
+
+//   return (
+//     <>
+//       <h4>Your Balance</h4>
+//       <h1>$400</h1>
+//     </>
+//   );
+// };
+
+************* EXPENSE FILTER *************
+
+import './ExpensesFilter.css';
+import React from 'react';
+import Card from "../UI/Card";
+
+const ExpensesFilter = (props) => {
+
+const yearList = [
+    {id: '1', value: '2019'},
+    {id: '2', value: '2020'}
+];
+    
+const handleYearFilterChange = (event) => {
+    const selectedFilter = event.target.value;
+    props.onYearFilterChanged(selectedFilter);
+}
+
+return (
+    <Card className='expenses'>
+        <div className='expenses-filter'>
+            <div className='expenses-filter__control'>
+                <select onChange={handleYearFilterChange}>{yearList.map((x) => 
+                    <option id={x.id}>{x.value}</option>
+                )}</select>
+            </div>
+        </div>
+        </Card>
+    );
+
+}
+export default ExpensesFilter;
+
+
+import ExpenseItem from "./ExpenseItem";
+import "./Expenses.css";
+import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
+
+function Expenses(props) {
+
+const handleYearFilterChange = (selectedYear) => {
+  console.log(selectedYear);
+};
+
+  return (
+    <div>
+    <ExpensesFilter onYearFilterChanged={handleYearFilterChange}/>
+    <Card className="expenses">
+     <ExpenseItem
+        title={props.expensesList[0].title}
+        date={props.expensesList[0].date}
+        amount={props.expensesList[0].amount}
+      />
+      <ExpenseItem
+        title={props.expensesList[1].title}
+        date={props.expensesList[1].date}
+        amount={props.expensesList[1].amount}
+      />
+      <ExpenseItem
+        title={props.expensesList[2].title}
+        date={props.expensesList[2].date}
+        amount={props.expensesList[2].amount}
+      />
+      <ExpenseItem
+        title={props.expensesList[3].title}
+        date={props.expensesList[3].date}
+        amount={props.expensesList[3].amount}
+      />
+    </Card>
+    </div>
+  );
+}
+export default Expenses;
+
+
+
+
+import './ExpensesFilter.css';
+import React from 'react';
+import Card from "../UI/Card";
+
+const ExpensesFilter = (props) => {
+
+const yearList = [
+    {id: '1', value: '2019'},
+    {id: '2', value: '2020'}
+];
+    
+const handleYearFilterChange = (event) => {
+    const selectedFilter = event.target.value;
+    props.onYearFilterChanged(selectedFilter);
+}
+
+return (
+    <Card className='expenses'>
+        <div className='expenses-filter'>
+            <div className='expenses-filter__control'>
+                <select onChange={handleYearFilterChange}>{yearList.map((x) => 
+                    <option id={x.id}>{x.value}</option>
+                )}</select>
+            </div>
+        </div>
+        </Card>
+    );
+
+}
+export default ExpensesFilter;
+
+
+import ExpenseItem from "./ExpenseItem";
+import "./Expenses.css";
+import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
+
+function Expenses(props) {
+
+const handleYearFilterChange = (selectedYear) => {
+  console.log(selectedYear);
+};
+
+  return (
+    <div>
+    <ExpensesFilter onYearFilterChanged={handleYearFilterChange}/>
+    <Card className="expenses">
+     <ExpenseItem
+        title={props.expensesList[0].title}
+        date={props.expensesList[0].date}
+        amount={props.expensesList[0].amount}
+      />
+      <ExpenseItem
+        title={props.expensesList[1].title}
+        date={props.expensesList[1].date}
+        amount={props.expensesList[1].amount}
+      />
+      <ExpenseItem
+        title={props.expensesList[2].title}
+        date={props.expensesList[2].date}
+        amount={props.expensesList[2].amount}
+      />
+      <ExpenseItem
+        title={props.expensesList[3].title}
+        date={props.expensesList[3].date}
+        amount={props.expensesList[3].amount}
+      />
+    </Card>
+    </div>
+  );
+}
+export default Expenses;
+
+
+
+import React from 'react';
+
+import './ExpensesFilter.css';
+
+function ExpensesFilter(props) {
+
+  // const [expensesYear, setExpensesYear] = React.useState('2022');
+
+  const expensesYearChangeHandler = (event) => {
+    // setExpensesYear(event.target.value);
+
+    props.onExpensesYearChange(event.target.value);
+  };
+
+  return (
+    <div className='expenses-filter'>
+      <div className='expenses-filter__control'>
+        <label>Filter by year</label>
+        <select onChange={expensesYearChangeHandler}>
+          <option value='2022'>2022</option>
+          <option value='2021'>2021</option>
+          <option value='2020'>2020</option>
+          <option value='2019'>2019</option>
+        </select>
+      </div>
+    </div>
+  );
+};
+
+export default ExpensesFilter;
+
+
+
+import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
+import ExpenseItem from "./ExpenseItem";
+
+import "./Expenses.css";
+
+function Expenses(props) {
+
+  const updateSelectedExpensesYear = (expensesYear) => {
+    console.log(expensesYear);
+  };
+
+  return (
+    <div>
+      <ExpensesFilter onExpensesYearChange={updateSelectedExpensesYear}/>
+      <Card className="expenses">
+        {props.expenses.map((object, key) => (
+          <ExpenseItem
+            title={object.title}
+            amount={object.amount}
+            date={object.date}
+          />
+        ))}
+      </Card>
+    </div>
+  );
+}
+
+export default Expenses;
+
+
+
+****** Filter Working ********
+return (
+    <div>
+      <Card className="expenses">
+      <ExpensesFilter getExpensesYear={getExpensesYearHandler} />
+        {props.expensesItems.map((item) => 
+          item.date.getFullYear() == expenseYear ?
+        (
+          <ExpenseItem
+            key={item.id}
+            title={item.title}
+            amount={item.amount}
+            date={item.date}
+          />
+        )
+        :
+        <p></p>
+        )}
+      </Card>
+    </div>
+  );
+
+  filteredSenzorOn = (actions) => {
+    let newSenzor = this.state.oldValue.filter((resp) => resp.title === actions)
+    this.setState({ action: newSenzor })
+  }

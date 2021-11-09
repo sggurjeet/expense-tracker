@@ -55,7 +55,12 @@ button{
   margin-left: auto;
 }
 
-h1,h2,h3,h4{
+label{
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+h1,h2,h3,h4,p{
   text-align: center;
   position: relative;
   display: block;
@@ -99,11 +104,25 @@ color:black
   margin-left: auto;
 }
 .income{
-    width: 300px;
-    position: relative;
+    width: 500px;
+    position:relative;
     display: block;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-right: auto;
     margin-left: auto;
+}
+.output{
+  margin-left: 200px;
+  margin-right: 10px;
+}
+
+.expenses-list{
+  list-style: none;
+  padding:0;
+}
+
+.expenses-list__fallback{
+  color: white;
+  text-align: center;
 }
